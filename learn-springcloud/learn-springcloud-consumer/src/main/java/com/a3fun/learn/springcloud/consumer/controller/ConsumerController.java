@@ -21,7 +21,7 @@ public class ConsumerController {
     @GetMapping("/consumer")
     public String all() {
         // 发起REST请求
-        return restTemplate.getForObject(getUrl("LEARN-SPRINGCLOUD-PRODUCER", "/hello"), String.class);
+        return restTemplate.getForObject(getUrl("LEARN-SPRINGCLOUD-PROVIDER", "/hello"), String.class);
     }
 
     /**

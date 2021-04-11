@@ -1,0 +1,24 @@
+server:
+  port: 7000
+
+spring:
+  application:
+    name: learn-springcloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: learn-springcloud-gateway #服务唯一ID标识
+          uri: http://localhost:8001/consumer #目标服务地址
+          predicates:
+            - Path=/consumer/** #请求转发
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 是否将当前服务向服务端注册
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka2001:2001/eureka/
+

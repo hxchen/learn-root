@@ -3,7 +3,7 @@ server:
 spring:
   profiles: provider9000
   application:
-    name: learn-springcloud-producer
+    name: learn-springcloud-provider
 eureka:
   instance:
     hostname: localhost
@@ -12,7 +12,7 @@ eureka:
     register-with-eureka: true # 是否将当前服务向服务端注册
     fetch-registry: false
     service-url:
-      defaultZone: http://eureka2001:2001/eureka/
+      defaultZone: http://localhost:2001/eureka/
 
 ---
 server:
@@ -20,7 +20,7 @@ server:
 spring:
   profiles: provider9001
   application:
-    name: learn-springcloud-producer
+    name: learn-springcloud-provider
 eureka:
   instance:
     hostname: localhost
@@ -29,5 +29,5 @@ eureka:
     register-with-eureka: true # 是否将当前服务向服务端注册
     fetch-registry: false
     service-url:
-      defaultZone: http://eureka2001:2001/eureka/
+      defaultZone: http://localhost:2001/eureka/
 

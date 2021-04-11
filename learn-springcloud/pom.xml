@@ -14,8 +14,9 @@
 
     <modules>
         <module>learn-springcloud-eureka</module>
-        <module>learn-springcloud-producer</module>
+        <module>learn-springcloud-provider</module>
         <module>learn-springcloud-consumer</module>
+        <module>learn-springcloud-gateway</module>
     </modules>
 
 </project>

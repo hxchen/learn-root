@@ -24,6 +24,7 @@ eureka:
     hostname: eureka2001
   client:
     register-with-eureka: false
+    fetch-registry: false
     serviceUrl:
       defaultZone: http://eureka2002:2002/eureka/,http://eureka2003:2003/eureka/
 spring:
@@ -39,6 +40,7 @@ eureka:
     hostname: eureka2002
   client:
     register-with-eureka: false
+    fetch-registry: false
     serviceUrl:
       defaultZone: http://eureka2001:2001/eureka/,http://eureka2003:2003/eureka/
 spring:
@@ -54,6 +56,7 @@ eureka:
     hostname: eureka2003
   client:
     register-with-eureka: false
+    fetch-registry: false
     serviceUrl:
       defaultZone: http://eureka2001:2001/eureka/,http://eureka2002:2002/eureka/
 spring:
