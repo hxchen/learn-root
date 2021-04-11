@@ -1,0 +1,33 @@
+server:
+  port: 9000
+spring:
+  profiles: provider9000
+  application:
+    name: learn-springcloud-producer
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 是否将当前服务向服务端注册
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka2001:2001/eureka/
+
+---
+server:
+  port: 9001
+spring:
+  profiles: provider9001
+  application:
+    name: learn-springcloud-producer
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 是否将当前服务向服务端注册
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka2001:2001/eureka/
+

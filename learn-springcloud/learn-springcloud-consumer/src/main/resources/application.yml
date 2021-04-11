@@ -1,0 +1,15 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: learn-springcloud-consumer
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 是否将当前服务向服务端注册
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka2001:2001/eureka/

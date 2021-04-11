@@ -11,8 +11,11 @@
 
     <artifactId>learn-springcloud</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>learn-springcloud-eureka</module>
+        <module>learn-springcloud-producer</module>
+        <module>learn-springcloud-consumer</module>
     </modules>
 
 </project>
