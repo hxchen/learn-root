@@ -12,6 +12,8 @@
     <modules>
         <module>learn-springcloud</module>
         <module>learn-concurrency</module>
+        <module>learn-java</module>
+        <module>learn-dubbo</module>
     </modules>
 
     <properties>
