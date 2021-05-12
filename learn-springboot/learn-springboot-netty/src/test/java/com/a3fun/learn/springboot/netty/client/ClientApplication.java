@@ -1,46 +1,82 @@
 package com.a3fun.learn.springboot.netty.client;
 
-import com.a3fun.learn.springboot.netty.server.GameServerListener;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.util.Scanner;
+import io.netty.util.CharsetUtil;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ClientApplication {
-    private static Logger LOGGER = LoggerFactory.getLogger(ClientApplication.class);
     private static ChannelFuture future;
+    static class Player implements Runnable {
 
-    public static void connect(){
-        Bootstrap bootstrap = new Bootstrap();
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
-        try {
-            bootstrap.group(workerGroup);
-            bootstrap.channel(NioSocketChannel.class);
-            bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
-            bootstrap.handler(new GameServerClientInitializer());
-            //连接
-            future = bootstrap.connect("127.0.0.1", 9000).sync();
-            LOGGER.info("客户端-服务器[127.0.0.1:9000]链接已建立!");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        private CyclicBarrier cyclicBarrier;
+        private String name;
+
+        public Player(CyclicBarrier cyclicBarrier, String name) {
+            this.cyclicBarrier = cyclicBarrier;
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            Bootstrap bootstrap = new Bootstrap();
+            NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+            try {
+                bootstrap.group(workerGroup);
+                bootstrap.channel(NioSocketChannel.class);
+                bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+                bootstrap.handler(new GameServerClientInitializer());
+                //连接
+                System.out.format("%s wait\n", name);
+                cyclicBarrier.await();
+                future = bootstrap.connect("127.0.0.1", 9000).sync();
+                System.out.format("%s:客户端[%s]-服务器[127.0.0.1:9000]链接已建立!\n", new Date().getTime(), name);
+                sendData(name.getBytes(CharsetUtil.UTF_8));
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        }
+        private void sendData(byte[] bytes) {
+            System.out.format("%s:发送数据：%s\n", new Date().getTime(), new String(bytes));
+            future.channel().writeAndFlush(Unpooled.copiedBuffer(bytes));
         }
     }
-    private static void sendData(byte[] bytes) {
-        future.channel().writeAndFlush(Unpooled.copiedBuffer(bytes));
+    static class Race {
+        public Race(){}
+        private CyclicBarrier cyclicBarrier = new CyclicBarrier(300);
+
+        public void start() {
+            List<Player> athleteList = new ArrayList<>();
+//            athleteList.add(new Player(cyclicBarrier, "博尔特"));
+//            athleteList.add(new Player(cyclicBarrier, "鲍威尔"));
+//            athleteList.add(new Player(cyclicBarrier, "盖伊"));
+//            athleteList.add(new Player(cyclicBarrier, "布雷克"));
+//            athleteList.add(new Player(cyclicBarrier, "加特林"));
+//            athleteList.add(new Player(cyclicBarrier, "苏炳添"));
+//            athleteList.add(new Player(cyclicBarrier, "路人甲"));
+//            athleteList.add(new Player(cyclicBarrier, "路人乙"));
+            for (int i = 0; i < 200; i++){
+                athleteList.add(new Player(cyclicBarrier, "player_" + i));
+            }
+            Executor executor = Executors.newCachedThreadPool();
+            for (Player player : athleteList) {
+                executor.execute(player);
+            }
+        }
     }
+
     public static void main(String[] args) {
-        connect();
-
-        System.out.println("请输入您发送的内容：");
-        Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()) {
-            byte[] bytes = sc.next().getBytes();
-            ClientApplication.sendData(bytes);
-        }
+        Race race = new Race();
+        race.start();
     }
 }
