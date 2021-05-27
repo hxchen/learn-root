@@ -52,8 +52,9 @@ public class ClientApplication {
         }
     }
     static class Race {
+        int player = 200;
         public Race(){}
-        private CyclicBarrier cyclicBarrier = new CyclicBarrier(300);
+        private CyclicBarrier cyclicBarrier = new CyclicBarrier(player);
 
         public void start() {
             List<Player> athleteList = new ArrayList<>();
@@ -65,7 +66,7 @@ public class ClientApplication {
 //            athleteList.add(new Player(cyclicBarrier, "苏炳添"));
 //            athleteList.add(new Player(cyclicBarrier, "路人甲"));
 //            athleteList.add(new Player(cyclicBarrier, "路人乙"));
-            for (int i = 0; i < 200; i++){
+            for (int i = 0; i < player; i++){
                 athleteList.add(new Player(cyclicBarrier, "player_" + i));
             }
             Executor executor = Executors.newCachedThreadPool();
