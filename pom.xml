@@ -14,8 +14,8 @@
         <module>learn-concurrency</module>
         <module>learn-java</module>
         <module>learn-dubbo</module>
-        <module>learn-redis</module>
         <module>learn-springboot</module>
+        <module>learn-flyway</module>
     </modules>
 
     <properties>
