@@ -6,3 +6,8 @@ dubbo:
 
 server:
   port: 80
+
+zookeeper:
+  connectString: 127.0.0.1:2181
+  maxRetries: 3
+  baseSleepTimeMs: 1000
