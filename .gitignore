@@ -24,3 +24,8 @@ hs_err_pid*
 .idea/*
 learn-springcloud/learn-springcloud-eureka/src/test/
 learn-springcloud/learn-springcloud-eureka/target/generated-sources/
+learn-dubbo/learn-dubbo-api/src/main/java/com/a3fun/learn/dubbo/api/service/UserService.java
+learn-dubbo/learn-dubbo-api/src/main/java/com/a3fun/learn/dubbo/api/vo/User.java
+learn-dubbo/learn-dubbo-consumer/src/main/java/com/a3fun/learn/dubbo/consumer/controller/UserController.java
+learn-dubbo/learn-dubbo-provider/src/main/java/com/a3fun/learn/dubbo/provider/service/impl/UserServiceImpl.java
+learn-dubbo/learn-dubbo.iml
