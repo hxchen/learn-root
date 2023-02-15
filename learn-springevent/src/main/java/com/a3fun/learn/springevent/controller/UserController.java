@@ -1,7 +1,7 @@
 package com.a3fun.learn.springevent.controller;
 
 import com.a3fun.learn.springevent.service.UserService;
-import com.a3fun.learn.springevent.vo.User;
+import com.a3fun.learn.springevent.vo.UserRegisterEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping(path = "/register")
     public String register(){
-        User user = new User(this);
+        UserRegisterEvent user = new UserRegisterEvent(this);
         user.setId(10000L);
         user.setName("wayne");
         user.setAge(18);

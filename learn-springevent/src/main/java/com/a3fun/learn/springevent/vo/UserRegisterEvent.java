@@ -11,12 +11,12 @@ import org.springframework.context.ApplicationEvent;
 @Setter
 @Getter
 @ToString
-public class User extends ApplicationEvent {
+public class UserRegisterEvent extends ApplicationEvent {
     private Long id;
     private String name;
     private Integer age;
 
-    public User(Object source) {
+    public UserRegisterEvent(Object source) {
         super(source);
     }
 }

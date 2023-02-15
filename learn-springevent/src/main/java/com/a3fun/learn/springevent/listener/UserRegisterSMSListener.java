@@ -2,7 +2,7 @@ package com.a3fun.learn.springevent.listener;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import com.a3fun.learn.springevent.vo.User;
+import com.a3fun.learn.springevent.vo.UserRegisterEvent;
 
 /**
  * 通过注解实现的监听器
@@ -12,7 +12,7 @@ import com.a3fun.learn.springevent.vo.User;
 public class UserRegisterSMSListener {
 
     @EventListener
-    public void handleUserEvent(User user){
+    public void handleUserEvent(UserRegisterEvent user){
         System.out.println("用户注册,发送短信：" + user.toString());
     }
 
