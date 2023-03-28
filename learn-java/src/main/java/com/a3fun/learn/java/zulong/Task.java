@@ -13,7 +13,7 @@ public final class Task extends Thread implements Comparable {
     @Override
     public void run() {
         try{
-            System.out.println(Thread.currentThread().getName() + "正在处理优先级：" + getPriority() + "的任务");
+            System.out.println(Thread.currentThread().getName() + " 正在处理id:" + id + " 优先级：" + getPriority() + "的任务");
         }catch (Exception e){
             e.printStackTrace();
         }

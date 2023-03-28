@@ -29,6 +29,7 @@ public class GameServer {
 
 
     public void run(){
+        LOGGER.info(Thread.currentThread().getName() + " GameServer run");
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -44,11 +45,11 @@ public class GameServer {
 
             // 绑定端口,开始接收进来的连接
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
-            LOGGER.info("Game server netty 服务启动: [port:" + port + "]");
+            LOGGER.info(Thread.currentThread().getName() + "    Game server netty 服务启动: [port:" + port + "]");
             // 等待服务器socket关闭
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
-            LOGGER.error("netty服务启动异常-" + e.getMessage());
+            LOGGER.error(Thread.currentThread().getName() + "   netty服务启动异常-" + e.getMessage());
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();

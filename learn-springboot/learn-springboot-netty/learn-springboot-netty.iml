@@ -110,5 +110,6 @@
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.3.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:jakarta.el:3.0.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.26" level="project" />
   </component>
 </module>

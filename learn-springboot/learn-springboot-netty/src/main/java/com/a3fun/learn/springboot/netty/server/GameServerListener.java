@@ -26,7 +26,7 @@ public class GameServerListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LOGGER.info("ServletContext初始化...");
+        LOGGER.info(Thread.currentThread().getName() + "    ServletContext初始化...");
 
         Thread thread = new Thread(new NettyServerThread());
         // 启动netty服务
@@ -45,6 +45,7 @@ public class GameServerListener implements ServletContextListener {
 
         @Override
         public void run() {
+            LOGGER.info(Thread.currentThread().getName() + " NettyServerThread run");
             gameServer.run();
         }
     }

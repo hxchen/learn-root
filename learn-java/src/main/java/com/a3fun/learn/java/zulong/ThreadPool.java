@@ -14,6 +14,7 @@ public class ThreadPool implements Runnable{
 
     ExecutorService executor1 = Executors.newFixedThreadPool(2);
     ExecutorService executor2 = Executors.newFixedThreadPool(3);
+
     private  PriorityBlockingQueue<Runnable>  priorityBlockingQueue1 = new PriorityBlockingQueue<>();
     private  PriorityBlockingQueue<Runnable>  priorityBlockingQueue2 = new PriorityBlockingQueue<>();
     public void AddTask(Runnable runnable){
@@ -30,15 +31,17 @@ public class ThreadPool implements Runnable{
 
     @Override
     public void run() {
+        System.out.println(Thread.currentThread().getName() + "    pool run size1: " + priorityBlockingQueue1.size() + ", size2:" + priorityBlockingQueue2.size());
         while (!priorityBlockingQueue1.isEmpty()){
+            System.out.println(Thread.currentThread().getName() + "    pool run executor1");
             executor1.execute(priorityBlockingQueue1.poll());
         }
         while (!priorityBlockingQueue2.isEmpty()){
+            System.out.println(Thread.currentThread().getName() + "    pool run executor2");
             executor2.execute(priorityBlockingQueue2.poll());
         }
 
     }
-
     public void shutDown(){
         System.out.println("线程池关闭");
         executor1.shutdown();
