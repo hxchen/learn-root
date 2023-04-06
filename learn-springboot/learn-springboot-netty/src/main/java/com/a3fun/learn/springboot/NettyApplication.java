@@ -19,5 +19,7 @@ public class NettyApplication {
         ApplicationUtil.initRunTime();
 
         ApplicationUtil.initWorldScheduler();
+
+        ApplicationUtil.initHandler();
     }
 }

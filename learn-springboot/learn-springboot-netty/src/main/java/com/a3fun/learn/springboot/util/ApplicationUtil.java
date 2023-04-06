@@ -1,6 +1,7 @@
 package com.a3fun.learn.springboot.util;
 
 import com.a3fun.learn.springboot.exec.SingleThreadTaskWorker;
+import com.a3fun.learn.springboot.handler.factory.ArraySpringMessageHandlerFactory;
 import com.a3fun.learn.springboot.service.WorldService;
 import com.a3fun.learn.springboot.world.WorldScheduler;
 import org.slf4j.Logger;
@@ -103,5 +104,10 @@ public class ApplicationUtil implements ApplicationContextAware {
         LOGGER.info(Thread.currentThread().getName() + "   initWorldScheduler");
         worldScheduler = new WorldScheduler();
         worldScheduler.start();
+    }
+
+    public static void initHandler(){
+        ArraySpringMessageHandlerFactory factory = new ArraySpringMessageHandlerFactory();
+        factory.init();
     }
 }
