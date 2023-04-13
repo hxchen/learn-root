@@ -12,7 +12,9 @@
     <artifactId>learn-springboot</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>learn-springboot-netty</module>
+        <module>learn-springboot-server</module>
+        <module>learn-springboot-client</module>
+        <module>learn-springboot-protocol</module>
     </modules>
     <properties>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>

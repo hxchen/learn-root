@@ -1,0 +1,17 @@
+namespace com.a3fun.learn.sb.protocol;
+table CSGetRoleInfo {
+    role_id:string;
+}
+table SCRoleInfo {
+    role_name:string;
+    exp:long;
+    level:int;
+    description:string;
+    avatar:string;
+    gold:long;
+    free_diamond:long;
+    recharge_diamond:long;
+    pve_id:string;
+    character:string;
+    bg_pic:string;
+}
