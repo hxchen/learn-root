@@ -9,6 +9,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -23,7 +24,8 @@ public class GameServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Resource
     GameServerHandler gameServerHandler;
-
+    @Resource
+    LoginAuthHandler loginAuthHandler;
 
     /**
      * 初始化channel
@@ -34,6 +36,7 @@ public class GameServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new IdleStateHandler(5, 0, 0));
         pipeline.addLast("frameDecoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
         pipeline.addLast("frameEncoder", new LengthFieldPrepender(4));
+        pipeline.addLast("loginHandler", loginAuthHandler);
         pipeline.addLast("handler", gameServerHandler);
     }
 
