@@ -11,11 +11,11 @@
 
     <modules>
         <module>learn-springcloud</module>
-        <module>learn-concurrency</module>
         <module>learn-java</module>
         <module>learn-dubbo</module>
         <module>learn-springboot</module>
         <module>learn-flyway</module>
+        <module>learn-concurrency</module>
     </modules>
 
     <properties>
