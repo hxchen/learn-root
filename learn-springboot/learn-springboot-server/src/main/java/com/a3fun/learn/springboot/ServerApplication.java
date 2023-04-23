@@ -21,5 +21,19 @@ public class ServerApplication {
         ApplicationUtil.initWorldScheduler();
 
         ApplicationUtil.initHandler();
+
+        regShutdownHook();
+    }
+
+    public static void regShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                System.out.println("优雅的关闭服务, 准备处理收尾工作");
+                // do something
+                System.out.println("可以安心停服了");
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }, "Shutdown Server"));
     }
 }
