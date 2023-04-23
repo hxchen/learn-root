@@ -15,12 +15,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties></properties>
+
     <dependencies>
         <!-- 继承自父项目的dependencies-->
-
-
-
     </dependencies>
+
     <dependencyManagement>
     </dependencyManagement>
+
 </project>
