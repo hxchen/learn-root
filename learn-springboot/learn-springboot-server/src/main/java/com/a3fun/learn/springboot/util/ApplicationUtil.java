@@ -106,8 +106,4 @@ public class ApplicationUtil implements ApplicationContextAware {
         worldScheduler.start();
     }
 
-    public static void initHandler(){
-        ArraySpringMessageHandlerFactory factory = new ArraySpringMessageHandlerFactory();
-        factory.init();
-    }
 }

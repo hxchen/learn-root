@@ -1,0 +1,4 @@
+namespace com.a3fun.learn.sb.protocol;
+table CSGetActivities{
+    role_id:string;
+}

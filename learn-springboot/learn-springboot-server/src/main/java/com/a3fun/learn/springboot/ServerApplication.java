@@ -20,8 +20,6 @@ public class ServerApplication {
 
         ApplicationUtil.initWorldScheduler();
 
-        ApplicationUtil.initHandler();
-
         regShutdownHook();
     }
 

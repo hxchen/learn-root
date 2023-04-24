@@ -1,0 +1,15 @@
+include "role.fbs";
+
+namespace com.a3fun.learn.sb.protocol;
+
+enum MessageType:int {
+    CSGetRoleInfo = 0,
+    SCRoleInfo = 10,
+}
+
+table Message{
+    type:MessageType;
+    body:[byte];
+}
+
+root_type Message;
