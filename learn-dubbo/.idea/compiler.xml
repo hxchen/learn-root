@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="learn-dubbo-api" />
+        <module name="learn-dubbo-consumer" />
+        <module name="learn-dubbo-provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="13" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf-8" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="learn-dubbo" options="" />
+      <module name="learn-dubbo-api" options="" />
+      <module name="learn-dubbo-consumer" options="" />
+      <module name="learn-dubbo-provider" options="" />
+    </option>
+  </component>
+</project>

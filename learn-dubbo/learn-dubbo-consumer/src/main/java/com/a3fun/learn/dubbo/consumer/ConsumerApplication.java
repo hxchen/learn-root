@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author haixiangchen
  */
 @SpringBootApplication
-@EnableDubbo(scanBasePackages = "com.a3fun.learn.dubbo.consumer")
+@EnableDubbo
 public class ConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class, args);

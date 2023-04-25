@@ -1,13 +1,11 @@
+
+# 定义 Dubbo 的应用名、Dubbo 协议信息、Dubbo 使用的注册中心地址。
 dubbo:
   application:
-    name: learn-dubbo-consumer
+    name: dubbo-springboot-demo-consumer
+    qosPort: 33333
+  protocol:
+    name: dubbo
+    port: -1
   registry:
-    address: zookeeper://127.0.0.1:2181 # zookeeper 注册中心地址
-
-server:
-  port: 80
-
-zookeeper:
-  connectString: 127.0.0.1:2181
-  maxRetries: 3
-  baseSleepTimeMs: 1000
+    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
