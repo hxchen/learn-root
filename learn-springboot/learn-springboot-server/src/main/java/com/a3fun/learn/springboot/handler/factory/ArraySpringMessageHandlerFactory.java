@@ -1,16 +1,17 @@
 package com.a3fun.learn.springboot.handler.factory;
 
 import com.a3fun.learn.springboot.handler.MessageHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.stereotype.Component;
+@Slf4j
 public class ArraySpringMessageHandlerFactory extends AbstractSpringMessageHandlerFactory {
     private int size = 10000;
     private MessageHandler<?, ?>[] handlers = null;
-    private static Logger LOGGER = LoggerFactory.getLogger(ArraySpringMessageHandlerFactory.class);
 
     public ArraySpringMessageHandlerFactory(){
-
+        log.info("ArraySpringMessageHandlerFactory 构造函数");
     }
 
     @Override
@@ -27,7 +28,7 @@ public class ArraySpringMessageHandlerFactory extends AbstractSpringMessageHandl
 
     @Override
     public <H extends MessageHandler<?, ?>> H getMessageHandler(int message) {
-        LOGGER.info("获取消息处理器");
+        log.info("获取消息处理器");
         H handler = (H)handlers[message];
         return handler;
     }

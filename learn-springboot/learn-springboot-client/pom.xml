@@ -17,6 +17,7 @@
     <properties></properties>
     <dependencies>
         <!-- 继承自父项目 -->
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
