@@ -6,3 +6,16 @@ netty:
 spring:
   application:
     name: Netty Server
+  data:
+    redis:
+      port: 6379
+      password:
+      database: 0
+      timeout: 600ms
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 2
+          max-wait: 10
+          min-idle: 2
+        shutdown-timeout: 1
