@@ -2,6 +2,7 @@ package com.a3fun.learn.springboot.controller;
 
 import com.a3fun.learn.springboot.exec.UserTaskExecutors;
 import com.a3fun.learn.springboot.model.Player;
+import com.a3fun.learn.springboot.service.Validator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
@@ -10,6 +11,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,11 @@ public class UserController {
 
     @Autowired
     RedisTemplate redisTemplate;
+    /**
+     * Spring会把所有实现自动注入进来
+     */
+    @Autowired
+    List<Validator> validators;
     /**
      * 一个故意写错的方法，让CPU 100%
      * @return
@@ -91,6 +98,15 @@ public class UserController {
         }
         long time = System.currentTimeMillis() - start;
         return time;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/validator")
+    public String validator(@RequestParam String email, @RequestParam String password, @RequestParam String name){
+        for (Validator validator : validators){
+            validator.validate(email, password, name);
+        }
+        return "success";
     }
 
 }
