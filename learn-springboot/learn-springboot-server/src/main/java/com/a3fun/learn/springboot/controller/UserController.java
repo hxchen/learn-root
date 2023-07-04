@@ -1,5 +1,6 @@
 package com.a3fun.learn.springboot.controller;
 
+import com.a3fun.learn.springboot.annonation.LoginRequired;
 import com.a3fun.learn.springboot.exec.UserTaskExecutors;
 import com.a3fun.learn.springboot.model.Player;
 import com.a3fun.learn.springboot.service.Validator;
@@ -31,6 +32,18 @@ public class UserController {
      */
     @Autowired
     List<Validator> validators;
+
+    @GetMapping(value = "/hello")
+    public String hello(){
+        return "hello";
+    }
+    @LoginRequired
+    @GetMapping(value = "/hello2")
+    public String hello2(@RequestParam String name){
+        log.info("hello2方法执行了");
+        return "hello, " + name;
+    }
+
     /**
      * 一个故意写错的方法，让CPU 100%
      * @return
